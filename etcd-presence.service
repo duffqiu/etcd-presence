@@ -1,0 +1,15 @@
+[Unit]
+Description=Etcd Presence
+BindsTo=etcd.service
+After=etcd.service
+
+[Service]
+Restart=always
+RestartSec=15
+EnvironmentFile=/etc/environment
+Environment="ETCD_PORT=4001"
+ExecStartPre=/usr/bin/etcdctl set --ttl 20 /skydns/org/duffqiu/cluster/_tcp/_etcd/%H '{"host":"${COREOS_PRIVATE_IPV4}","port":${ETCD_PORT}}'
+ExecStart=/usr/bin/echo "Set etcd service srv record in skydns2"
+
+[X-Fleet]
+Global=true
