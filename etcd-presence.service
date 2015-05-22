@@ -13,3 +13,4 @@ ExecStart=/usr/bin/echo "Set etcd service srv record in skydns2"
 
 [X-Fleet]
 Global=true
+MachineMetadata=role=front
