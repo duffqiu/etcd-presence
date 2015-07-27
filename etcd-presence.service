@@ -1,7 +1,7 @@
 [Unit]
 Description=Etcd Presence
-BindsTo=etcd.service
-After=etcd.service
+BindsTo=etcd2.service
+After=etcd2.service
 
 [Service]
 Restart=always
@@ -13,4 +13,3 @@ ExecStart=/usr/bin/echo "Set etcd service srv record in skydns2"
 
 [X-Fleet]
 Global=true
-MachineMetadata=role=front
